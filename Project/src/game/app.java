@@ -10,6 +10,7 @@ import game.Frame;
 
 public class app implements Runnable {
 	
+	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -33,19 +34,13 @@ public class app implements Runnable {
 	    Frame.setContentPane(checkerBoard);
 
 	    Frame.pack();
-	   Frame.setVisible(true);
+	    Frame.setVisible(true);
 	 
 	}
 	
-
-	  public static void main(String[] args) {
-	    try {
-	      SwingUtilities.invokeAndWait(new app());
-	    } catch (InvocationTargetException | InterruptedException e) {
-	      e.printStackTrace();
-	    }
-	  }
-
+	public app() {
+		initialize();
+	}
 	
-
 }
+
