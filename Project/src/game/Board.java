@@ -50,12 +50,14 @@ public class Board extends JPanel{
 
 	  protected void initialize() {
 		    this.setLayout(new GridLayout(rows, cols, 0, 0));
+		  
 
 		    generateZones();
 		  }
 		  
 	  private void generateZones() {
 			    this.setLayout(new GridLayout(rows, cols, 0, 0));
+			
 
 			    this.zones = new BoardZone[rows][cols];
 			    for (int row = 0; row < rows; row++) {
@@ -65,7 +67,7 @@ public class Board extends JPanel{
 			    }
 			  }
 		  
-	  public void paintComponent(Graphics g) {		// ÆÇ ¹è¿­
+	  public void paintComponent(Graphics g) {		// ï¿½ï¿½ ï¿½è¿­
 		    super.paintComponent(g);
 
 		    int tileWidth = this.getWidth() / cols;
@@ -83,7 +85,7 @@ public class Board extends JPanel{
 		      }
 		    }
 		    
-		    for( int row = 1; row < 9; row++) {			// Áß°£ È­¸é °¡¸®±â
+		    for( int row = 1; row < 9; row++) {			// ï¿½ß°ï¿½ È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		    	for (int col = 1; col < 9; col++) {
 		    		int x = col * tileWidth;
 		    		int y = row * tileHeight;
