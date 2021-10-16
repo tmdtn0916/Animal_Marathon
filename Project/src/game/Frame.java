@@ -1,102 +1,198 @@
 package game;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.basic.BasicBorders.RolloverButtonBorder;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Random;
-import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 import java.awt.CardLayout;
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
-public class Frame extends JFrame{
+import static game.Dice.*;
 
-	public Frame(String title) {
-		    super(title);
+import static game.DiceImage.*;
 
-		    this.setResizable(false);
-		    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		    setBounds(100, 100, 445, 567);
-		    getContentPane().setLayout(new CardLayout(0, 0));
-		    JPanel panel = new JPanel();
-		    getContentPane().add(panel, "name_7306242585800");
-		    panel.setLayout(null);
-		    
-		    JButton btnNewButton = new JButton("START");
-		    btnNewButton.addActionListener(new ActionListener() {
-		    	public void actionPerformed(ActionEvent e) {
-		    		CardLayout c = (CardLayout)getContentPane().getLayout();
-		    		c.next(getContentPane());
-		    		new app();
-		    		
-		    	}
-		    });
-		    btnNewButton.setBounds(159, 236, 97, 23);
-		    panel.add(btnNewButton);
-		    
-		    JPanel panel_1 = new JPanel();
-		    getContentPane().add(panel_1, "name_7327005426500");
-		    panel_1.setLayout(null);
-		    
-		    JButton btnNewButton_1 = new JButton("\uC8FC\uC0AC\uC704 \uAD74\uB9AC\uAE30");
-		    btnNewButton_1.addActionListener(new ActionListener() {
-		    	public void actionPerformed(ActionEvent e) {
-		    		Dice();
-		    		
-		    		
-		    	}
-		    });
-		    btnNewButton_1.setBounds(145, 421, 155, 23);
-		    panel_1.add(btnNewButton_1);
-		    
-		    JTextArea textArea = new JTextArea();
-		    textArea.setBounds(12, 87, 415, 259);
-		    panel_1.add(textArea);
-		    
-		    JTextArea textArea_1 = new JTextArea();
-		    textArea_1.setBounds(12, 21, 415, 32);
-		    panel_1.add(textArea_1);
-		  }
+
+
+
+
+
+
+public class Frame extends JFrame {
+	public static int xpos = 0;
+	public static int ypos = 0;
+	
+	int Turn = 0;
+	
+	
+	private JPanel contentPane;
+	
+	View mView= new View();
+	Dice dice = new Dice();
 	
 	
 	
-	public void Dice() {
-		int dice1 = 0;
-		int dice2 = 0;
+	public Frame() {
 		
-		Random random = new Random();
-		dice1 = random.nextInt(6) + 1;
-		dice2 = random.nextInt(6) + 1;
+		getContentPane().setLayout(new CardLayout(0, 0));
 		
-		int sum = dice1 + dice2;
-
-	}
+		JPanel panel = new JPanel();
+		getContentPane().add(panel, "name_2082211712500");
+		panel.setLayout(null);
+		
+		getContentPane().add(mView, "name_2066570270000");
+		mView.setLayout(null);
+		
+		
+		
+		JLabel lblNewLabel = new JLabel(""); //1ST_DICE
+		lblNewLabel.setIcon(new ImageIcon(Frame.class.getResource("/images/Dice_1.png")));
+		lblNewLabel.setBounds(925, 206, 222, 206);
+		mView.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel(""); //2ND_DICE
+		lblNewLabel_1.setIcon(new ImageIcon(Frame.class.getResource("/images/Dice_2.png")));
+		lblNewLabel_1.setBounds(1145, 206, 239, 208);
+		mView.add(lblNewLabel_1);
+		
+		
+		//
+		//
+		///
+		//////
+		/////
+		//////
+		////////
+		////////
+		
 	
-	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Frame frame = new Frame("CE Board Game");
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		
+		
+		JLabel man = new JLabel("");
+		man.setIcon(new ImageIcon(Frame.class.getResource("/images/among.gif")));
+		man.setLocation(xpos, ypos); // FIRST CHARACTER LOTATE;
+		man.setSize(50, 50);
+		mView.add(man);
+		
+		
+		
+		JButton btnNewButton_1 = new JButton("START");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CardLayout c = (CardLayout)getContentPane().getLayout();
+				c.next(getContentPane());
 			}
 		});
+		btnNewButton_1.setBounds(485, 365, 437, 142);
+		panel.add(btnNewButton_1);
+		
+		////
+		//////
+		///////
+		/////
+		//
+		//
+		//////
+		//////
+		/////
+		/////
+		JButton btnNewButton = new JButton("RollDice");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int value = dice.Roll(); 
+				Turn++;
+				
+				//// DICE
+				if(dice1 == 1) {
+					lblNewLabel.setIcon(new ImageIcon(Frame.class.getResource(image1)));
+				}
+				
+				else if(dice1 == 2) {
+					lblNewLabel.setIcon(new ImageIcon(Frame.class.getResource(image2)));
+				}
+				
+				
+				else if(dice1 == 3) {
+					lblNewLabel.setIcon(new ImageIcon(Frame.class.getResource(image3)));
+				}
+				
+				else if(dice1 == 4) {
+					lblNewLabel.setIcon(new ImageIcon(Frame.class.getResource(image4)));
+				}
+				
+				
+				else if(dice1 == 5) {
+					lblNewLabel.setIcon(new ImageIcon(Frame.class.getResource(image5)));
+				}
+				
+				
+				else if(dice1 == 6) {
+					lblNewLabel.setIcon(new ImageIcon(Frame.class.getResource(image6)));
+				}
+				
+				if(dice2 == 1) {
+					lblNewLabel_1.setIcon(new ImageIcon(Frame.class.getResource(image1)));
+				}
+				
+				else if(dice2 == 2) {
+					lblNewLabel_1.setIcon(new ImageIcon(Frame.class.getResource(image2)));
+				}
+				
+				else if(dice2 == 3) {
+					lblNewLabel_1.setIcon(new ImageIcon(Frame.class.getResource(image3)));
+				}
+				
+				else if(dice2 == 4) {
+					lblNewLabel_1.setIcon(new ImageIcon(Frame.class.getResource(image4)));
+				}
+				
+				else if(dice2 == 5) {
+					lblNewLabel_1.setIcon(new ImageIcon(Frame.class.getResource(image5)));
+				}
+				
+				else if(dice2 == 6) {
+					lblNewLabel_1.setIcon(new ImageIcon(Frame.class.getResource(image6)));
+				}
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				//man.setLocation(xpos--,ypos--);
+
+			}
+		});
+		btnNewButton.setBounds(1084, 792, 150, 44);
+		mView.add(btnNewButton);
+		
+		
+		
+		setTitle("CE Board Game");
+		setSize(1400,1000);
+		setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
+	
+	
+	
+	
+	
 }
-
-
-
-
-
 
 
