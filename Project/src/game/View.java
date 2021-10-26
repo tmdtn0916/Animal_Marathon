@@ -42,6 +42,23 @@ public class View extends JPanel {
 			   
 			   
 		   }
+	   } 
+	   
+	    
+	   
+	   for(int y = 1; y<HEIGHT_COUNT - 1; y++) {
+		   for(int x= 1; x< WIDTH_COUNT - 1; x++) {
+			   
+			   xpos = x*100;
+			   ypos = y*100;
+			   
+			   
+			   g.setColor(Color.gray);
+			   g.fillRect(xpos, ypos, 100, 100);
+			   
+			   
+			   
+		   }
 	   }   
    }
    

@@ -16,7 +16,7 @@ public class Dice {
 			dice1 = random.nextInt(6) + 1;
 			dice2 = random.nextInt(6) + 1;
 			
-			int sum = dice1 + dice2;
+			int sum = (int)(dice1 + dice2);
 			
 			
 			return sum;
