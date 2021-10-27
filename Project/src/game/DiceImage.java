@@ -1,8 +1,6 @@
 package game;
 
 
-import static game.Dice.dice1;
-import static game.Dice.dice2;
 import game.Frame;
 
 
