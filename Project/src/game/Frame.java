@@ -26,7 +26,7 @@ import java.awt.Dimension;
 
 
 public class Frame extends JFrame {
-	
+	private Thread thread;
 	public int xpos = 000;
 	public int ypos = 000;
 	public int xpos_2 = 050;
@@ -158,27 +158,39 @@ public class Frame extends JFrame {
 		JButton btnNewButton = new JButton("RollDice");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				int value = dice.Roll(); 
-				
-				
-				
-				//FIRST PLAYER MOVE
-				if(turn == 1) {
+				thread = new Thread(new Runnable() {
 					
-					elephant.checkPos(value);
-					turn = 2;
-				}
+					@Override
+					public void run() {
+						try {
+							thread.sleep(800);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						// TODO Auto-generated method stub
+						//FIRST PLAYER MOVE
+						if(turn == 1) {
+							
+							elephant.checkPos(value);
+							turn = 2;
+						}
+						
+						
+						/// SECOND PLAYER MOVE
+						else if(turn == 2) {
+							
+							penguin.checkPos(value);
+							turn = 1;
+						}
+					}
+				});
 				
 				
-				/// SECOND PLAYER MOVE
-				else if(turn == 2) {
-					
-					penguin.checkPos(value);
-					turn = 1;
-				}
 				
-
+				
+				thread.start();
 
 			}
 		});
