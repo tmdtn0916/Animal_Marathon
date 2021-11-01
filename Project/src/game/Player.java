@@ -1,7 +1,11 @@
 package game;
 
+import javax.swing.JPanel;
+
 public class Player {
 	private Frame frame;
+	
+	protected JPanel endpanel;
 	
 	public Player(Frame frame) 
 	{
@@ -12,6 +16,8 @@ public class Player {
 	{
 		return this.frame;
 	}
+	
+	
 	
 	
 }
