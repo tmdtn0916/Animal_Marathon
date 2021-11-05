@@ -31,7 +31,7 @@ public class PenguinPlayer extends Player {
 				}
 				
 				for (int i = 0; i < value; i++) {
-					if(count != 94) {
+					if(count != 96) {
 					
 						if (ypos == 50 && xpos < 850) {
 							xpos += 100;

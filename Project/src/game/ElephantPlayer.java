@@ -31,7 +31,7 @@ public class ElephantPlayer extends Player {
 			public void run() {
 				// TODO Auto-generated method stub
 				for (int i = 0; i < value; i++) {
-					if(count != 94) {
+					if(count != 96) {
 						if (ypos == 0 && xpos < 800) {
 							xpos += 100;
 						

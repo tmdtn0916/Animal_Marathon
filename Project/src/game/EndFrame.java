@@ -21,14 +21,14 @@ public class EndFrame extends JFrame {
 	public EndFrame() {
 		setTitle("Congratulations");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 268, 163);
+		setBounds(100, 100, 299, 184);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		Label label = new Label("Congratulations Penguin Win!");
-		label.setBounds(43, 40, 188, 47);
+		label.setBounds(59, 48, 188, 47);
 		contentPane.add(label);
 	}
 
